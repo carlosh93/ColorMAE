@@ -1,3 +1,11 @@
+/work_dirs
+# /noise_colors
+._.DS_Store
+__pycache__/
+
+# Pytorch
+*.pth
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
