@@ -1,3 +1,5 @@
+Under Construction... 🚧
+
 ### Training commands
 
 **To train with single GPU:**
@@ -7,7 +9,7 @@
 python tools/train.py configs/colormae_vit-base-p16_8xb512-amp-coslr-300e_in1k.py
 ```
 
-**To train with multiple GPUs (1 node 4 gpus):**
+<!-- **To train with multiple GPUs (1 node 4 gpus):**
 ```bash
 mim train mmpretrain configs/examplenet_8xb32_in1k.py --launcher pytorch --gpus 8
 ```
@@ -53,12 +55,3 @@ mim test mmpretrain configs/examplenet_8xb32_in1k.py --checkpoint $CHECKPOINT --
 ## Citation
 
 <!-- Replace to the citation of the paper your project refers to. -->
-
-```BibTeX
-@misc{2023mmpretrain,
-    title={OpenMMLab's Pre-training Toolbox and Benchmark},
-    author={MMPreTrain Contributors},
-    howpublished = {\url{https://github.com/open-mmlab/mmpretrain}},
-    year={2023}
-}
-```

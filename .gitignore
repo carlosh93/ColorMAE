@@ -1,5 +1,8 @@
 /work_dirs
-# /noise_colors
+/data/imagenet
+/noise_colors/
+/pretrained/
+
 ._.DS_Store
 __pycache__/
 

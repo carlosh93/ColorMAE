@@ -1,0 +1,1 @@
+_base_ = 'mmpretrain::mae/benchmarks/vit-base-p16_8xb128-coslr-100e_in1k.py'
