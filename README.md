@@ -31,22 +31,23 @@ We introduce ColorMAE, a simple yet effective **data-independent** method which 
 To get started with ColorMAE, follow these steps to set up the required environment and dependencies. This guide will walk you through creating a Conda environment, installing necessary packages, and setting up the project for use.
 
 1. Clone our repo to your local machine
-```shell
+```bash
 git clone https://github.com/carlosh93/ColorMAE.git
 cd ColorMAE
 ```
 2. Create conda environment with python 3.10.12 
-```shell
-conda create --prefix ./venv python=3.10.12
+```bash
+conda create --prefix ./venv python=3.10.12 -y
 conda activate ./venv
 ```
 3. Install Pytorch 2.0.1 and mmpretrain 1.0.2:
-```shell
-conda install pytorch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 pytorch-cuda=11.8 -c pytorch -c nvidia
-pip install -U openmim && mim install mmpretrain==1.0.2
+```bash
+conda install pytorch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 pytorch-cuda=11.8 -c pytorch -c nvidia -y
+
+pip install -U openmim && mim install mmpretrain==1.0.2 mmengine==0.8.4 mmcv==2.0.1
 ```
 
-Note: You can install mmpretrain as a Python package (see above) or from source. Please see [here](https://mmpretrain.readthedocs.io/en/latest/get_started.html#installation).
+Note: You can install mmpretrain as a Python package (using the above commands) or from source (see [here](https://mmpretrain.readthedocs.io/en/latest/get_started.html#installation)).
 
 <!-- 4. `mim install mmengine==0.8.4` -->
 <!-- 5. `pip install yapf==0.40.1` -->
