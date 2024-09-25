@@ -30,7 +30,7 @@ We introduce ColorMAE, a simple yet effective **data-independent** method which 
 ## News and Updates :newspaper_roll:
 
 **September 25, 2024**
-- Our ColorMAE models' checkpoints are available in our [OSF project](https://osf.io/r856v/) and the names and md5 checksums for each model will be updated in this [spreadsheet](https://docs.google.com/spreadsheets/d/167amd8fiX9AGc0sLiouL8TcBNyARcR3E1VqHIgUnAuM/edit?usp=sharing) once available.
+- Our ColorMAE models' checkpoints are available in our [OSF project](https://osf.io/r856v/). The names and md5 checksums for each model will be updated in this [spreadsheet](https://docs.google.com/spreadsheets/d/167amd8fiX9AGc0sLiouL8TcBNyARcR3E1VqHIgUnAuM/edit?usp=sharing) once available.
 
 **August 19, 2024**
 - Our paper will be presented in both the ECCV main conference and in the [SSLWIN workshop](https://sslwin.org/#format), see you in Milan!
