@@ -27,6 +27,20 @@
 
 We introduce ColorMAE, a simple yet effective **data-independent** method which generates different binary mask patterns by filtering random noise. Drawing inspiration from color noise in image processing, we explore four types of filters to yield mask patterns with different spatial and semantic priors. ColorMAE requires no additional learnable parameters or computational overhead in the network, yet it significantly enhances the learned representations.
 
+## News and Updates :newspaper_roll:
+
+**September 25, 2024**
+- Our ColorMAE models' checkpoints are available in our [OSF project](https://osf.io/r856v/) and the names and md5 checksums for each model will be updated in this [spreadsheet](https://docs.google.com/spreadsheets/d/167amd8fiX9AGc0sLiouL8TcBNyARcR3E1VqHIgUnAuM/edit?usp=sharing) once available.
+
+**August 19, 2024**
+- Our paper will be presented in both the ECCV main conference and in the [SSLWIN workshop](https://sslwin.org/#format), see you in Milan!
+
+**July 17, 2024**
+- Our preprint is available at [Arxiv](https://arxiv.org/abs/2407.13036)
+
+**July 1, 2024**
+- Our paper have been accepted to ECCV 2024!
+
 ## Installation
 To get started with ColorMAE, follow these steps to set up the required environment and dependencies. This guide will walk you through creating a Conda environment, installing necessary packages, and setting up the project for use.
 
@@ -41,16 +55,16 @@ conda create --prefix ./venv python=3.10.12 -y
 conda activate ./venv
 ```
 3. Install Pytorch 2.0.1 and mmpretrain 1.0.2:
+
 ```bash
-conda install pytorch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 pytorch-cuda=11.8 -c pytorch -c nvidia -y
+pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cu118
 
 pip install -U openmim && mim install mmpretrain==1.0.2 mmengine==0.8.4 mmcv==2.0.1
+
+pip install yapf==0.40.1
 ```
 
 Note: You can install mmpretrain as a Python package (using the above commands) or from source (see [here](https://mmpretrain.readthedocs.io/en/latest/get_started.html#installation)).
-
-<!-- 4. `mim install mmengine==0.8.4` -->
-<!-- 5. `pip install yapf==0.40.1` -->
 
 ## Getting Started
 
@@ -110,7 +124,7 @@ In the following tables we provide the pretrained and finetuned models with thei
 | `name` | [ColorMAE-G 300-Epochs](https://) |   xx.xx    |   xx.xx   |   45.80   | [config](benchmarks/segmentation/configs/xx.py) |                      N/A                      |
 | `name` | [ColorMAE-G 800-Epochs](https://) |   xx.xx    |   xx.xx   |   49.18   | [config](benchmarks/segmentation/configs/xx2.py) |                      N/A                      |
 
-### Object Detection on COCO
+### Object Detection and Instance Segmentation on COCO
 
 | Model                                     |                   Pretrain                   | Params (M) | Flops (G) | $AP^{bbox}$ (%) |                   Config                   |                   Download                    |
 | :---------------------------------------- | :------------------------------------------: | :--------: | :-------: | :-------: | :----------------------------------------: | :-------------------------------------------: |

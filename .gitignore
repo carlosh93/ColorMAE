@@ -2,7 +2,8 @@
 /data/imagenet
 /noise_colors/
 /pretrained/
-
+**/dcgm/
+/run_slurm
 ._.DS_Store
 __pycache__/
 
