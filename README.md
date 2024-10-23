@@ -184,11 +184,11 @@ We evaluate transfer learning performance using our pre-trained ColorMAE models 
 If you use our code or models in your research, please cite our work as follows:
 
 ```Latex
-@article{hinojosa2024colormae,
+@inproceedings{hinojosa2024colormae,
   title={ColorMAE: Exploring data-independent masking strategies in Masked AutoEncoders},
   author={Hinojosa, Carlos and Liu, Shuming and Ghanem, Bernard},
-  journal={arXiv preprint arXiv:2407.13036},
-  url={https://arxiv.org/pdf/2407.13036}
+  booktitle={European Conference on Computer Vision},
+  url={https://www.ecva.net/papers/eccv_2024/papers_ECCV/html/3072_ECCV_2024_paper.php}
   year={2024}
 }
 ```
