@@ -202,7 +202,7 @@ If you encounter the following warning at the beginning of pretraining:
 UserWarning: Applied workaround for CuDNN issue, install nvrtc.so (Triggered internally at /opt/conda/conda-bld/pytorch_1682343995026/work/aten/src/ATen/native/cudnn/Conv_v8.cpp:80.)
   return F.conv2d(input, weight, bias, self.stride,
 ```
-**Solution:** This warning indicates a missing or incorrectly linked nvrtc.so library in your environment. To resolve this issue, create a symbolic link to the appropriate libnvrtc.so file. Follow these steps:
+**Solution:** This warning indicates a missing or incorrectly linked nvrtc.so library in your environment. To resolve this issue, create a symbolic link to the appropriate `libnvrtc.so` file. Follow these steps:
 1. Navigate to the library directory of your virtual environment:
 ```bash
 cd venv/lib/  # Adjust the path if your environment is located elsewhere
