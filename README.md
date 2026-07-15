@@ -29,8 +29,11 @@ We introduce ColorMAE, a simple yet effective **data-independent** method which 
 
 ## News and Updates :newspaper_roll:
 
+**July 15, 2026**
+- [Hugging Face](https://huggingface.co/carlosh93/colormae) is now the canonical checkpoint archive. The OSF project remains available as an additional mirror.
+
 **September 25, 2024**
-- Our ColorMAE models' checkpoints are available in our [OSF project](https://osf.io/r856v/). The names and md5 checksums for each model will be updated in this [spreadsheet](https://docs.google.com/spreadsheets/d/167amd8fiX9AGc0sLiouL8TcBNyARcR3E1VqHIgUnAuM/edit?usp=sharing) once available.
+- Our ColorMAE checkpoints are also available in our [OSF project](https://osf.io/r856v/). The names and MD5 checksums are tracked in this [spreadsheet](https://docs.google.com/spreadsheets/d/167amd8fiX9AGc0sLiouL8TcBNyARcR3E1VqHIgUnAuM/edit?usp=sharing).
 
 **August 19, 2024**
 - Our paper will be presented in both the ECCV main conference and in the [SSLWIN workshop](https://sslwin.org/#format), see you in Milan!
@@ -97,45 +100,55 @@ You can download these pre-generated color noise patterns and place them in the 
 
 ## Models and results
 
-In the following tables we provide the pretrained and finetuned models with their corresponding results presented in the paper.
+The [ColorMAE Hugging Face repository](https://huggingface.co/carlosh93/colormae) is the canonical checkpoint archive. OSF links are intentionally retained as mirrors. Each Hugging Face task directory includes its exact config and, for segmentation and detection, the corresponding metric log. File sizes, local provenance, and SHA-256 checksums are recorded in the [release manifest](https://huggingface.co/carlosh93/colormae/blob/main/ViT_Base/RELEASE_MANIFEST.jsonl).
+
+### Hugging Face release index
+
+| Pretraining | Pretrained | ImageNet-1K | ADE20K | COCO 768 | COCO 1024 |
+| :--: | :--: | :--: | :--: | :--: | :--: |
+| 300 epochs | [checkpoint](https://huggingface.co/carlosh93/colormae/resolve/main/ViT_Base/300/green/pretrain/epoch_300.pth?download=true) | [83.01 top-1](https://huggingface.co/carlosh93/colormae/resolve/main/ViT_Base/300/green/inet_classification/epoch_98.pth?download=true) | [45.80 mIoU](https://huggingface.co/carlosh93/colormae/resolve/main/ViT_Base/300/green/segmentation/iter_160000.pth?download=true) | [48.7 box AP / 43.3 mask AP](https://huggingface.co/carlosh93/colormae/resolve/main/ViT_Base/300/green/detection/size_768/iter_184375.pth?download=true) | [50.4 box AP / 44.9 mask AP](https://huggingface.co/carlosh93/colormae/resolve/main/ViT_Base/300/green/detection/size_1024/iter_184375.pth?download=true) |
+| 800 epochs | [checkpoint](https://huggingface.co/carlosh93/colormae/resolve/main/ViT_Base/800/green/pretrain/epoch_800.pth?download=true) | [83.61 top-1](https://huggingface.co/carlosh93/colormae/resolve/main/ViT_Base/800/green/inet_classification/epoch_99.pth?download=true) | [49.18 mIoU](https://huggingface.co/carlosh93/colormae/resolve/main/ViT_Base/800/green/segmentation/iter_144000.pth?download=true) | [49.5 box AP / 43.7 mask AP](https://huggingface.co/carlosh93/colormae/resolve/main/ViT_Base/800/green/detection/size_768/iter_184375.pth?download=true) | — |
+| 1600 epochs | [checkpoint](https://huggingface.co/carlosh93/colormae/resolve/main/ViT_Base/1600/green/pretrain/epoch_1600.pth?download=true) | [83.77 top-1](https://huggingface.co/carlosh93/colormae/resolve/main/ViT_Base/1600/green/inet_classification/epoch_99.pth?download=true) | [49.26 mIoU](https://huggingface.co/carlosh93/colormae/resolve/main/ViT_Base/1600/green/segmentation/iter_160000.pth?download=true) | [50.1 box AP / 44.3 mask AP](https://huggingface.co/carlosh93/colormae/resolve/main/ViT_Base/1600/green/detection/size_768/iter_184375.pth?download=true) | [51.5 box AP / 45.7 mask AP](https://huggingface.co/carlosh93/colormae/resolve/main/ViT_Base/1600/green/detection/size_1024/iter_184375.pth?download=true) |
 
 ### Pretrained models
 
 | Model                                           | Params (M) | Flops (G) |                           Config                           |                                   Download                                   |
 | :---------------------------------------------- | :--------: | :-------: | :--------------------------------------------------------: | :--------------------------------------------------------------------------: |
-| `colormae_vit-base-p16_8xb512-amp-coslr-300e_in1k.py`   |   111.91   |   16.87   |  [config](configs/colormae_vit-base-p16_8xb512-amp-coslr-300e_in1k.py)  | [model](https://osf.io/9ck2v) \| [log](logs/pretrain/300e/colormae-green_300e_scalars.json) |
-| `colormae_vit-base-p16_8xb512-amp-coslr-800e_in1k.py`   |   111.91   |   16.87   |  [config](configs/colormae_vit-base-p16_8xb512-amp-coslr-800e_in1k.py)  | [model](https://osf.io/9vpby) \| [log](logs/pretrain/800e/colormae-green_800e_scalars.json) |
-| `colormae_vit-base-p16_8xb512-amp-coslr-1600e_in1k.py`   |   111.91   |   16.87   |  [config](configs/colormae_vit-base-p16_8xb512-amp-coslr-1600e_in1k.py)  | [model](https://osf.io/qbwk4) \| [log](logs/pretrain/1600e/colormae-green_1600e_scalars.json) |
+| `colormae_vit-base-p16_8xb512-amp-coslr-300e_in1k.py`   |   111.91   |   16.87   |  [config](configs/colormae_vit-base-p16_8xb512-amp-coslr-300e_in1k.py)  | [Hugging Face](https://huggingface.co/carlosh93/colormae/resolve/main/ViT_Base/300/green/pretrain/epoch_300.pth?download=true), [OSF mirror](https://osf.io/9ck2v), [log](logs/pretrain/300e/colormae-green_300e_scalars.json) |
+| `colormae_vit-base-p16_8xb512-amp-coslr-800e_in1k.py`   |   111.91   |   16.87   |  [config](configs/colormae_vit-base-p16_8xb512-amp-coslr-800e_in1k.py)  | [Hugging Face](https://huggingface.co/carlosh93/colormae/resolve/main/ViT_Base/800/green/pretrain/epoch_800.pth?download=true), [OSF mirror](https://osf.io/9vpby), [log](logs/pretrain/800e/colormae-green_800e_scalars.json) |
+| `colormae_vit-base-p16_8xb512-amp-coslr-1600e_in1k.py`   |   111.91   |   16.87   |  [config](configs/colormae_vit-base-p16_8xb512-amp-coslr-1600e_in1k.py)  | [Hugging Face](https://huggingface.co/carlosh93/colormae/resolve/main/ViT_Base/1600/green/pretrain/epoch_1600.pth?download=true), [OSF mirror](https://osf.io/qbwk4), [log](logs/pretrain/1600e/colormae-green_1600e_scalars.json) |
 
 
 ### Image Classification on ImageNet-1k
 
 | Model                                     |                   Pretrain                   | Params (M) | Flops (G) | Top-1 (%) |                   Config                   |                   Download                    |
 | :---------------------------------------- | :------------------------------------------: | :--------: | :-------: | :-------: | :----------------------------------------: | :-------------------------------------------: |
-| `vit-base-p16_colormae-green-300e-pre_8xb128-coslr-100e_in1k` | [ColorMAE-G 300-Epochs](https://osf.io/9ck2v) |   86.57    |   17.58   |   83.01  | [config](benchmarks/image_classification/configs/vit-base-p16_8xb128-coslr-100e_in1k.py) |                     [model](https://osf.io/yrwtp) \| [log](logs/benchmarks/image_classification/300e/vit-base-colormae-green-300e_scalars.json)                      |
-| `vit-base-p16_colormae-green-800e-pre_8xb128-coslr-100e_in1k` | [ColorMAE-G 800-Epochs](https://osf.io/9vpby) |   86.57    |   17.58   |   83.61   | [config](benchmarks/image_classification/configs/vit-base-p16_8xb128-coslr-100e_in1k.py) |                      [model](https://osf.io/vptza) \| [log](logs/benchmarks/image_classification/800e/vit-base-colormae-green-800e_scalars.json)                      |
-| `vit-base-p16_colormae-green-1600e-pre_8xb128-coslr-100e_in1k` | [ColorMAE-G 1600-Epochs](https://osf.io/qbwk4) |   86.57    |   17.58   |   83.77   | [config](benchmarks/image_classification/configs/vit-base-p16_8xb128-coslr-100e_in1k.py) |                      [model](https://osf.io/43x9z) \| [log](logs/benchmarks/image_classification/1600e/vit-base-colormae-green-1600e_scalars.json)                      |
+| `vit-base-p16_colormae-green-300e-pre_8xb128-coslr-100e_in1k` | [ColorMAE-G 300-Epochs](https://huggingface.co/carlosh93/colormae/resolve/main/ViT_Base/300/green/pretrain/epoch_300.pth?download=true) |   86.57    |   17.58   |   83.01  | [config](benchmarks/image_classification/configs/vit-base-p16_8xb128-coslr-100e_in1k.py) | [Hugging Face](https://huggingface.co/carlosh93/colormae/resolve/main/ViT_Base/300/green/inet_classification/epoch_98.pth?download=true), [OSF mirror](https://osf.io/yrwtp), [log](logs/benchmarks/image_classification/300e/vit-base-colormae-green-300e_scalars.json) |
+| `vit-base-p16_colormae-green-800e-pre_8xb128-coslr-100e_in1k` | [ColorMAE-G 800-Epochs](https://huggingface.co/carlosh93/colormae/resolve/main/ViT_Base/800/green/pretrain/epoch_800.pth?download=true) |   86.57    |   17.58   |   83.61   | [config](benchmarks/image_classification/configs/vit-base-p16_8xb128-coslr-100e_in1k.py) | [Hugging Face](https://huggingface.co/carlosh93/colormae/resolve/main/ViT_Base/800/green/inet_classification/epoch_99.pth?download=true), [OSF mirror](https://osf.io/vptza), [log](logs/benchmarks/image_classification/800e/vit-base-colormae-green-800e_scalars.json) |
+| `vit-base-p16_colormae-green-1600e-pre_8xb128-coslr-100e_in1k` | [ColorMAE-G 1600-Epochs](https://huggingface.co/carlosh93/colormae/resolve/main/ViT_Base/1600/green/pretrain/epoch_1600.pth?download=true) |   86.57    |   17.58   |   83.77   | [config](benchmarks/image_classification/configs/vit-base-p16_8xb128-coslr-100e_in1k.py) | [Hugging Face](https://huggingface.co/carlosh93/colormae/resolve/main/ViT_Base/1600/green/inet_classification/epoch_99.pth?download=true), [OSF mirror](https://osf.io/43x9z), [log](logs/benchmarks/image_classification/1600e/vit-base-colormae-green-1600e_scalars.json) |
 <!-- TODO: Linear Probing Results -->
 
 ### Semantic Segmentation on ADE20K
 
 | Model                                     |                   Pretrain                   | Params (M) | Flops (G) | mIoU (%) |                   Config                   |                   Download                    |
 | :---------------------------------------- | :------------------------------------------: | :--------: | :-------: | :-------: | :----------------------------------------: | :-------------------------------------------: |
-| `name` | [ColorMAE-G 300-Epochs](https://) |   xx.xx    |   xx.xx   |   45.80   | [config](benchmarks/segmentation/configs/xx.py) |                      N/A                      |
-| `name` | [ColorMAE-G 800-Epochs](https://) |   xx.xx    |   xx.xx   |   49.18   | [config](benchmarks/segmentation/configs/xx2.py) |                      N/A                      |
+| `ColorMAE-G 300e UperNet` | [ColorMAE-G 300-Epochs](https://huggingface.co/carlosh93/colormae/resolve/main/ViT_Base/300/green/pretrain/epoch_300.pth?download=true) |   —    |   —   |   45.80   | [config](benchmarks/segmentation/configs/colormae-base_upernet_8xb2-amp-160k_ade20k-512x512.py) | [checkpoint](https://huggingface.co/carlosh93/colormae/resolve/main/ViT_Base/300/green/segmentation/iter_160000.pth?download=true), [log](https://huggingface.co/carlosh93/colormae/blob/main/ViT_Base/300/green/segmentation/scalars.json) |
+| `ColorMAE-G 800e UperNet` | [ColorMAE-G 800-Epochs](https://huggingface.co/carlosh93/colormae/resolve/main/ViT_Base/800/green/pretrain/epoch_800.pth?download=true) |   —    |   —   |   49.18   | [config](benchmarks/segmentation/configs/colormae-base_upernet_8xb2-amp-160k_ade20k-512x512.py) | [checkpoint](https://huggingface.co/carlosh93/colormae/resolve/main/ViT_Base/800/green/segmentation/iter_144000.pth?download=true), [log](https://huggingface.co/carlosh93/colormae/blob/main/ViT_Base/800/green/segmentation/scalars.json) |
+| `ColorMAE-G 1600e UperNet` | [ColorMAE-G 1600-Epochs](https://huggingface.co/carlosh93/colormae/resolve/main/ViT_Base/1600/green/pretrain/epoch_1600.pth?download=true) |   —    |   —   |   49.26   | [config](benchmarks/segmentation/configs/colormae-base_upernet_8xb2-amp-160k_ade20k-512x512.py) | [checkpoint](https://huggingface.co/carlosh93/colormae/resolve/main/ViT_Base/1600/green/segmentation/iter_160000.pth?download=true), [log](https://huggingface.co/carlosh93/colormae/blob/main/ViT_Base/1600/green/segmentation/scalars.json) |
 
 ### Object Detection and Instance Segmentation on COCO
 
 | Model                                     |                   Pretrain                   | Params (M) | Flops (G) | $AP^{bbox}$ (%) |                   Config                   |                   Download                    |
 | :---------------------------------------- | :------------------------------------------: | :--------: | :-------: | :-------: | :----------------------------------------: | :-------------------------------------------: |
-| `name` | [ColorMAE-G 300-Epochs](https:) |   xx.xx    |   xx.xx   |   48.70   | [config](benchmarks/object_detection/configs/xx.py) |                      N/A                      |
-| `name` | [ColorMAE-G 800-Epochs](https://) |   xx.xx    |   xx.xx   |   49.50   | [config](benchmarks/object_detection/configs/xx2.py) |                      N/A                      |
+| `ColorMAE-G 300e ViTDet` | [ColorMAE-G 300-Epochs](https://huggingface.co/carlosh93/colormae/resolve/main/ViT_Base/300/green/pretrain/epoch_300.pth?download=true) |   —    |   —   |   48.70   | [config](benchmarks/object_detection/configs/vitdet_mask-rcnn_vit-b-mae_lsj-100e.py) | [checkpoint](https://huggingface.co/carlosh93/colormae/resolve/main/ViT_Base/300/green/detection/size_768/iter_184375.pth?download=true), [log](https://huggingface.co/carlosh93/colormae/blob/main/ViT_Base/300/green/detection/size_768/scalars.json) |
+| `ColorMAE-G 800e ViTDet` | [ColorMAE-G 800-Epochs](https://huggingface.co/carlosh93/colormae/resolve/main/ViT_Base/800/green/pretrain/epoch_800.pth?download=true) |   —    |   —   |   49.50   | [config](benchmarks/object_detection/configs/vitdet_mask-rcnn_vit-b-mae_lsj-100e.py) | [checkpoint](https://huggingface.co/carlosh93/colormae/resolve/main/ViT_Base/800/green/detection/size_768/iter_184375.pth?download=true), [log](https://huggingface.co/carlosh93/colormae/blob/main/ViT_Base/800/green/detection/size_768/scalars.json) |
+| `ColorMAE-G 1600e ViTDet` | [ColorMAE-G 1600-Epochs](https://huggingface.co/carlosh93/colormae/resolve/main/ViT_Base/1600/green/pretrain/epoch_1600.pth?download=true) |   —    |   —   |   50.10   | [config](benchmarks/object_detection/configs/vitdet_mask-rcnn_vit-b-mae_lsj-100e.py) | [checkpoint](https://huggingface.co/carlosh93/colormae/resolve/main/ViT_Base/1600/green/detection/size_768/iter_184375.pth?download=true), [log](https://huggingface.co/carlosh93/colormae/blob/main/ViT_Base/1600/green/detection/size_768/scalars.json) |
 
 ### Using the Models
 
 **Predict image**
 
-Download the `vit-base-p16_colormae-green-300e-pre_8xb128-coslr-100e_in1k.pth` [**pretrained classification model**](https://osf.io/yrwtp) and place it inside the `pretrained` folder, then run:
+Download the `vit-base-p16_colormae-green-300e-pre_8xb128-coslr-100e_in1k.pth` [**pretrained classification model from Hugging Face**](https://huggingface.co/carlosh93/colormae/resolve/main/ViT_Base/300/green/inet_classification/epoch_98.pth?download=true) (or use the [OSF mirror](https://osf.io/yrwtp)) and place it inside the `pretrained` folder, then run:
 ```python
 from mmpretrain import ImageClassificationInferencer
 
@@ -150,7 +163,7 @@ print(result['pred_score'])
 
 **Use the pretrained model**
 
-Also, you can use the [**pretrained ColorMAE model**](https://osf.io/9ck2v) to extract features.
+You can also use the [**pretrained ColorMAE model from Hugging Face**](https://huggingface.co/carlosh93/colormae/resolve/main/ViT_Base/300/green/pretrain/epoch_300.pth?download=true) (or the [OSF mirror](https://osf.io/9ck2v)) to extract features.
 ```python
 import torch
 from mmpretrain import get_model
