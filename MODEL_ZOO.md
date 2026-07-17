@@ -8,7 +8,7 @@ ColorMAE-Green is the recommended model family. Blue, Purple, and Red are the co
 
 The model-zoo links below use `.safetensors`, the recommended format. Safetensors contains only tensors and cannot execute pickle imports.
 
-Each safetensors file has a sibling `.pth` with the same base name for MMEngine 0.8.4 compatibility. These `.pth` files contain only `{"state_dict": ...}`, are tensor-equivalent to the safetensors files, and pass PickleScan with zero dangerous globals. Optimizer, scheduler, and message-hub resume state are intentionally excluded from the public release.
+Each safetensors file has a sibling `.pth` with the same base name. The `.pth` files preserve the exact model, optimizer, parameter-scheduler, epoch/iteration, and safe MMEngine MessageHub runtime state. They pass PickleScan and support native MMEngine 0.8.4 resume. Historical scalar-log buffers are intentionally reset because their `HistoryBuffer` objects caused the original warning; this does not change model or optimization state.
 
 To use safetensors directly, build the model with the linked config and load its state dictionary:
 
@@ -19,7 +19,12 @@ state_dict = load_file("checkpoint.safetensors", device="cpu")
 model.load_state_dict(state_dict)
 ```
 
-For existing OpenMMLab commands, replace `.safetensors` with `.pth` in a download URL and use the checkpoint normally.
+For direct OpenMMLab loading or native training resume, replace `.safetensors` with `.pth` in a download URL. For example:
+
+```bash
+python tools/train.py PATH/TO/config.py \
+  --resume PATH/TO/checkpoint.pth
+```
 
 ## Recommended ColorMAE-Green models
 
@@ -73,7 +78,7 @@ ViT_Base/
 └── MODEL_ZOO_ARTIFACTS_MANIFEST.jsonl
 ```
 
-Each task directory contains a canonical `config.py`. Every raw resolved config and scalar-log shard is also preserved under `runs/<timestamp>/`, including interrupted or resumed run shards. The [checkpoint manifest](https://huggingface.co/carlosh93/colormae/blob/main/ViT_Base/MODEL_ZOO_MANIFEST.jsonl) records task metrics, selected steps, source logs, sizes, SHA-256 hashes, and local provenance. The [security conversion manifest](https://huggingface.co/carlosh93/colormae/blob/main/SECURITY_CONVERSION_MANIFEST.jsonl) records original resume-checkpoint hashes, tensor fingerprints, compatibility-checkpoint hashes, safetensors hashes, and conversion verification. The [artifact manifest](https://huggingface.co/carlosh93/colormae/blob/main/ViT_Base/MODEL_ZOO_ARTIFACTS_MANIFEST.jsonl) records the same integrity information for configs and logs.
+Each task directory contains a canonical `config.py`. Every raw resolved config and scalar-log shard is also preserved under `runs/<timestamp>/`, including interrupted or resumed run shards. The [checkpoint manifest](https://huggingface.co/carlosh93/colormae/blob/main/ViT_Base/MODEL_ZOO_MANIFEST.jsonl) records task metrics, selected steps, source logs, sizes, SHA-256 hashes, and local provenance. The [security conversion manifest](https://huggingface.co/carlosh93/colormae/blob/main/SECURITY_CONVERSION_MANIFEST.jsonl) records original resume-checkpoint hashes, model/optimizer/scheduler fingerprints, cleaned resume-checkpoint hashes, safetensors hashes, and conversion verification. The [artifact manifest](https://huggingface.co/carlosh93/colormae/blob/main/ViT_Base/MODEL_ZOO_ARTIFACTS_MANIFEST.jsonl) records the same integrity information for configs and logs.
 
 The Purple and Red 100-epoch pretraining files are byte-identical epoch-100 snapshots from their corresponding 300-epoch runs. Their source checkpoint aliases and source-run evidence are recorded explicitly in the checkpoint manifest.
 
